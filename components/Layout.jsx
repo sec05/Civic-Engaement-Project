@@ -1,21 +1,15 @@
 import React from 'react'
-import Navbar from './Navbar'
+import MenuBar from './MenuBar'
+import styles from "../styles/Layout.module.scss"
 
-const layoutStyle = {
-    display: "flex",
-    //flexDirection: "column",
-    height: "100%",
-    width: "100%"
-  };
-  const contentStyle = {
-    
-  }
 export default function Layout(props){
     return(
-        <div className="layout" style={layoutStyle}>
-            <Navbar />
-            <div className="content" style={contentStyle}>
-                {props.children}
+        <div className="layout">
+            <MenuBar />
+            
+
+            <div className={styles.content}>
+            {props.children}
             </div>
         </div>
     )}
