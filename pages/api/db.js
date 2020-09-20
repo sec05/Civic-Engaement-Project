@@ -1,63 +1,89 @@
 const MongoClient = require('mongodb').MongoClient;
 import info from "../../db.json"
-export default class databases
-{
-  constructor()
-  {
+export default class databases {
+  constructor() {
     this.uri = `mongodb+srv://sec05:${info.password}@pbcluster.ure7r.mongodb.net/${info.name}?retryWrites=true&w=majority`;
     this.client = new MongoClient(this.uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    this.connect = this.connect.bind(this);
+    this.disconnect = this.disconnect.bind(this);
     this.insertUser = this.insertUser.bind(this);
     this.insertRoom = this.insertRoom.bind(this);
+    this.searchUsername = this.searchUsername.bind(this);
   }
- async insertUser(userObj)
-  {
-    await this.client.connect(async err => {
-      try{
+  async connect(mongoConnection) {
+    await mongoConnection.connect(err => {
+      if (err) console.log(err);
+    });
+  }
+  async disconnect(mongoConnection) {
+    await mongoConnection.close();
+  }
 
-      const collection = this.client.db("PBData").collection("PBUsers");
-      await collection.insert(userObj, (err,res)=>{
+  async insertUser(userObj,mongoConnection) {
+
+    try {
       
-        try{
+      const collection = mongoConnection.db("PBData").collection("PBUsers");
+      await collection.insertOne(userObj, (err, res) => {
+
+        try {
+
           console.log("User inserted!");
         }
-        catch(error)
-        {
+        catch (error) {
+          if (err) console.log(err);
           console.log(error);
         }
-      })
-      }
-      catch(error)
-      {
-        console.log(error);
-      }
-     
-      
-      await this.client.close();
-    });
-  }
-  async insertRoom(roomObj)
-  {
-    await this.client.connect(async err => {
-      try{
+      });
+    }
+    catch (error) {
+      console.log(error);
+    }
+  
 
-      const collection = this.client.db("PBData").collection("PBRooms");
-      await collection.insert(roomObj, (err,res)=>{
-        try{
+  }
+  async insertRoom(roomObj, mongoConnection) {
+
+    try {
+      
+      const collection = mongoConnection.db("PBData").collection("PBRooms");
+      await collection.insertOne(roomObj, (err, res) => {
+        try {
+
           console.log("Room inserted!");
         }
-        catch(error)
-        {
+        catch (error) {
+          if (err) console.log(err);
           console.log(error);
         }
       })
-      }
-      catch(error)
-      {
-        console.log(error);
-      }
-     
+    }
+    catch (error) {
+    
+      console.log(error);
+    }
+  }
+  async searchUsername(user, mongoConnection) {
+   
+    try {
+      const collection = mongoConnection.db("PBData").collection("PBUsers");
+      const search = collection.find({ username: user }).toArray((err, result) => {
+        try {
+
+          console.log(result);
+          console.log(result.length);
+        }
+        catch (error) {
+          if (err) console.log(err);
+          console.log(error);
+        }
+      });
+
+    }
+    catch (error) {
       
-      await this.client.close();
-    });
+      console.log(error);
+    }
+    
   }
 }

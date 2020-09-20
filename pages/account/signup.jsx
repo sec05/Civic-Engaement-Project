@@ -6,7 +6,9 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
+import jsCookie from 'js-cookie';
 export default class signup extends React.Component {
+   
   constructor() {
     super();
     this.state = {
@@ -28,7 +30,7 @@ export default class signup extends React.Component {
           let send;
           e.preventDefault();
           function sendData(){
-
+            const username = document.getElementById("username").value;
             axios.post("/api/account/signup",
             {
                 Firstname: document.getElementById("FirstName").value,
@@ -38,32 +40,45 @@ export default class signup extends React.Component {
             }).catch(err=>{
                 window.alert("there was an error submitting please try again!");
                 return Promise.reject();
-            }).then(()=>{
+            }).then(async (response)=>{
+              if(response.status = 201)
+              {
+                jsCookie.set("username", username);
                 window.location.href="/";
+              }
+              
                 
-            })
+            })  
           }
           if(this.state.Password === this.state.PasswordConf)
           {
-          for(const prop in this.state)
+            if(this.state.Password.length >= 5)
             {
-              send = true;
-              if(this.state[prop] === "")
+              for(const prop in this.state)
               {
-                window.alert("Please answer all form fields!");
-                send = false;
-                break;
+                send = true;
+                if(this.state[prop] === "")
+                {
+                  window.alert("Please answer all form fields!");
+                  send = false;
+                  break;
+                }
+                        
               }
-                      
+              if(send===true)
+              {
+                sendData();
+              }
+              if(send===false)
+              {
+                return;
+              } 
             }
-            if(send===true)
+            else
             {
-              sendData();
+              window.alert("Password length must be longer than 5 characters!");
             }
-            if(send===false)
-            {
-              return;
-            } 
+          
           }
           else{
             window.alert("Passwords do not match!");
@@ -91,9 +106,9 @@ export default class signup extends React.Component {
       
     }
   };
-  handlePasswordChange = async(e) => {
+  handlePasswordChange = (e) => {
     if (e.target.value.match("^[a-zA-Z1-9]*$") != null && /\s/g.test(e.target.value) === false) {
-    await this.setState({ Password: e.target.value });
+     this.setState({ Password: e.target.value });
     if(this.state.PasswordConf != "")
     {
        if(this.state.PasswordConf === this.state.Password)
@@ -108,9 +123,9 @@ export default class signup extends React.Component {
         }   
     }
   }};
-  handlePasswordConfChange = async(e) => {
+  handlePasswordConfChange = (e) => {
     if (e.target.value.match("^[a-zA-Z1-9]*$") != null && /\s/g.test(e.target.value) === false) {
-        await this.setState({ PasswordConf: e.target.value });
+         this.setState({ PasswordConf: e.target.value });
 
         
           if(this.state.PasswordConf === this.state.Password)

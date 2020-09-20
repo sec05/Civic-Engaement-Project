@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styles from "../styles/MenuBar.module.scss"
 import Head from "next/head"
 import Navbar from "react-bootstrap/Navbar"
 import Nav from "react-bootstrap/Nav"
 import NavDropdown from "react-bootstrap/NavDropdown"
-export default function pageNavbar() {
+
+export default class pageNavbar extends Component {
+  constructor(props)
+  {
+    super(props);
+    
+  }
+ 
+  render(){
     return (
         
         <div style={{borderBottom: "1px solid black"}}>
@@ -23,7 +31,7 @@ export default function pageNavbar() {
         <NavDropdown.Item href="#action/3.2">Reclaim Our Vote</NavDropdown.Item>
       </NavDropdown>
     </Nav>
-    <NavDropdown title="Username" id="basic-nav-dropdown" inline className={styles.MenuItem}>
+    <NavDropdown title={this.props.username} id="basic-nav-dropdown" inline className={styles.MenuItem}>
   
         <NavDropdown.Item href="/account/settings">Settings</NavDropdown.Item>
         <NavDropdown.Item href="/account/signout">Sign Out</NavDropdown.Item>
@@ -36,4 +44,6 @@ export default function pageNavbar() {
         </div>
 
     )
+    }
+    
 }
