@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
-import jsCookie from 'js-cookie';
+
 export default class signup extends React.Component {
    
   constructor() {
@@ -31,7 +31,7 @@ export default class signup extends React.Component {
           e.preventDefault();
           function sendData(){
             const username = document.getElementById("username").value;
-            axios.post("/api/account/signup",
+            axios.post("/api/signup",
             {
                 Firstname: document.getElementById("FirstName").value,
                 Lastname: document.getElementById("LastName").value,
@@ -43,8 +43,7 @@ export default class signup extends React.Component {
             }).then(async (response)=>{
               if(response.status = 201)
               {
-                jsCookie.set("username", username);
-                window.location.href="/";
+                
               }
               
                 
@@ -100,15 +99,17 @@ export default class signup extends React.Component {
     }
   };
   handleUsernameChange = async (e) => {
-    if (e.target.value.match("^[a-zA-Z1-9]*$") != null && /\s/g.test(e.target.value) === false) {
+    if (e.target.value.match("^[a-zA-Z0-9]*$") != null && /\s/g.test(e.target.value) === false) {
      
       this.setState({ Username: e.target.value });
       
     }
   };
-  handlePasswordChange = (e) => {
-    if (e.target.value.match("^[a-zA-Z1-9]*$") != null && /\s/g.test(e.target.value) === false) {
-     this.setState({ Password: e.target.value });
+  handlePasswordChange = async (e) => {
+    
+    if (e.target.value.match("^[a-zA-Z0-9]*$") != null && /\s/g.test(e.target.value) === false) {
+     await this.setState({ Password: e.target.value });
+  
     if(this.state.PasswordConf != "")
     {
        if(this.state.PasswordConf === this.state.Password)
@@ -123,9 +124,11 @@ export default class signup extends React.Component {
         }   
     }
   }};
-  handlePasswordConfChange = (e) => {
-    if (e.target.value.match("^[a-zA-Z1-9]*$") != null && /\s/g.test(e.target.value) === false) {
-         this.setState({ PasswordConf: e.target.value });
+  handlePasswordConfChange = async(e) => {
+   
+
+    if (e.target.value.match("^[a-zA-Z0-9]*$") != null && /\s/g.test(e.target.value) === false) {
+        await this.setState({ PasswordConf: e.target.value });
 
         
           if(this.state.PasswordConf === this.state.Password)

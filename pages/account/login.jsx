@@ -20,7 +20,7 @@ export default class login extends React.Component {
   {
     let send;
     e.preventDefault();
-    axios.post("/api/account/login",{
+    axios.post("/api/login",{
       username: this.state.username,
       password: this.state.password,
     }).catch(error=>{

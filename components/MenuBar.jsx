@@ -31,7 +31,7 @@ export default class pageNavbar extends Component {
         <NavDropdown.Item href="#action/3.2">Reclaim Our Vote</NavDropdown.Item>
       </NavDropdown>
     </Nav>
-    <NavDropdown title={this.props.username} id="basic-nav-dropdown" inline className={styles.MenuItem}>
+    <NavDropdown title={this.props.username} id="basic-nav-dropdown" inline className={styles.MenuItem.toString()}>
   
         <NavDropdown.Item href="/account/settings">Settings</NavDropdown.Item>
         <NavDropdown.Item href="/account/signout">Sign Out</NavDropdown.Item>

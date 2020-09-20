@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-import info from "../../../db.json"
+import info from "../../db.json"
 const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://sec05:${info.password}@pbcluster.ure7r.mongodb.net/${info.name}?retryWrites=true&w=majority`;
 
