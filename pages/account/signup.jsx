@@ -38,12 +38,17 @@ export default class signup extends React.Component {
                 username: document.getElementById("username").value,
                 password: document.getElementById("password").value,
             }).catch(err=>{
-                window.alert("there was an error submitting please try again!");
-                return Promise.reject();
+              window.alert("there was an error submitting please try again!");
+              return Promise.reject();
             }).then(async (response)=>{
               if(response.status = 201)
               {
-                
+                axios.post("/api/sessions",{
+                  username: document.getElementById("username").value,
+                }).catch(err=>{
+                   window.alert("there was an error submitting please try again!");
+                return Promise.reject();
+                }).then(window.location.href = "/")
               }
               
                 
