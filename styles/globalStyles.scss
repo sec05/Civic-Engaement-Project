@@ -4,3 +4,33 @@
     width: 0 !important;
     overflow: hidden;
 }
+.roomBar
+{
+margin-left: 10% !important;
+margin-right: 5% !important;
+
+width: 60% !important;
+
+}
+.infoWidgetContainer
+{
+    
+    width: 15%;
+    height: 500px;
+    background-color: red;
+    margin-right: 10%;
+}
+.roomContainer
+{
+   display: flex;
+
+}
+.roomBarTop
+{
+    background-Color: #000000;
+          border-Radius: 10px;
+          justify-Content: center;
+          align-Items: Center;
+          font-Size: 130%;
+          height: 10% !important;
+}

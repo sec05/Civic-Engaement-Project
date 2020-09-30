@@ -1,0 +1,27 @@
+.indexContainer
+{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 7.5%;
+    
+}
+.title
+{
+    font-size: 4vw !important;
+}
+.ti-cursor
+{
+    font-size: 4vw;
+}
+.titleButtonContainer
+{
+    display: flex;
+    justify-content: center;
+   margin-top: 7.5%;
+}
+.titleButtonContainer > Button
+{
+    padding: 0.5% 2%;
+    border-radius: 6%;
+    font-size: 200%;
+}

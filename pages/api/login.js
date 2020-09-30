@@ -5,7 +5,6 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://sec05:${info.password}@pbcluster.ure7r.mongodb.net/${info.name}?retryWrites=true&w=majority`;
 import withSession from "../../helpers/sessions"
 export default withSession( async (req, res) => {
-    console.log(req.body, "login api")
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(async (err) => {
         if (err) console.log(err);
