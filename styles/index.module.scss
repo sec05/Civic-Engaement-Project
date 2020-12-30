@@ -7,7 +7,15 @@
 }
 .title
 {
-    font-size: 4vw !important;
+    font-size: 3vw;
+    color: #2B2D42;
+    display: inline;
+}
+.titleTI
+{
+    font-size: 3vw;
+    color: #D80032;
+    display: inline;
 }
 .ti-cursor
 {
@@ -21,7 +29,28 @@
 }
 .titleButtonContainer > Button
 {
-    padding: 0.5% 2%;
-    border-radius: 6%;
-    font-size: 200%;
+    padding: 1vh 2vw;
+    border-radius: 7px;
+    font-size: 2vw;
+    background-color: #2B2D42;
+    color: white;
+    border: none;
+}
+.titleButtonContainer > Button:hover, .titleButtonContainer > Button:focus
+{
+    background-color: #2B2D42 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.background
+{
+    z-index: -10;
+   position: absolute;
+}
+.phone
+{
+   background-image: url(../public/phone.png);
+   height: 100px;
+   width: 100px;
 }

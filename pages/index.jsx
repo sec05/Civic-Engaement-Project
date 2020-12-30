@@ -3,18 +3,29 @@ import styles from "../styles/index.module.scss";
 import Layout from "../components/Layout";
 import TypeIt from "typeit-react";
 import Button from "react-bootstrap/Button"
+import { useRouter } from "next/router";
+import useUser from "../utils/userCheck";
+
 export default function Home() {
-  const words = ["Collaboratively", "Whenever", "Interactively"];
+  const router = useRouter();
+  const { user, mutateUser } = useUser();
+  const words = ["friends", "work", "school", "youth group"];
   return (
     <Layout>
+      
       <div className={styles.indexContainer}>
+        
         <div style={{ textAlign: "center" }}>
           <div style={{ display: "inline-block" }}>
-            <h1 className={styles.title}>The Place to Phonebank&nbsp;</h1>
-          </div>
-          <div style={{ display: "inline-block" }}>
-            <TypeIt
-           className={styles.title}
+
+            <h1 className={styles.title}>A way to phonebank together <br/> online with your </h1> 
+            
+            </div>
+            <div >
+              
+              <TypeIt
+           className={styles.titleTI}
+           
               element={"h1"}
               options={{ loop: true }}
               getBeforeInit={(instance) => {
@@ -25,18 +36,33 @@ export default function Home() {
                     .delete(words[i].length)
                     .pause(500);
                 }
-                // Remember to return it!
                 return instance;
               }}
             />
-          </div>  
-          
-          <div className={styles.titleButtonContainer} >
-              <Button >Sign Up</Button>
-              <div style={{width: "10%"}}></div>
-              <Button>Log In</Button>
+
           </div>
+           {!user?.isLoggedIn && (
+          <div className={styles.titleButtonContainer} >
+           
+              <Button onClick={()=>{router.push("/account/signup")}}>Sign Up</Button>
+              <div style={{width: "10%"}}></div>
+              <Button onClick={()=>{router.push("/account/login")}}>Log In</Button>
+          
+             
+          </div> 
+           )}
+            {user?.isLoggedIn && (
+          <div className={styles.titleButtonContainer} >
+           
+              <Button onClick={()=>{router.push("/rooms/overview")}}>Join a room</Button>
+              <div style={{width: "10%"}}></div>
+              <Button onClick={()=>{router.push("/rooms/creator")}}>Create a room</Button>
+          
+             
+          </div> 
+           )}
         </div>
+      
       </div>
     </Layout>
   );

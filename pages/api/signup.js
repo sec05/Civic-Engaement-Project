@@ -3,7 +3,7 @@ const saltRounds = 10;
 import info from "../../db.json"
 const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://sec05:${info.password}@pbcluster.ure7r.mongodb.net/${info.name}?retryWrites=true&w=majority`;
-import withSession from "../../helpers/sessions"
+import withSession from "../../utils/sessions"
 export default withSession(async (req, res) => {
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(async (err) => {
@@ -17,15 +17,15 @@ export default withSession(async (req, res) => {
                 await bcrypt.hash(req.body.password, saltRounds, async (err, hash) => {
                     if (err) console.log(err);
                     req.body.password = hash;
-
-                    const collection = client.db("PBData").collection("PBUsers");
-                    collection.insertOne(req.body, (err, res) => {
-                        if (err) console.log(err);
-
-                    });
+            
+                        const collection = client.db("PBData").collection("PBUsers");
+                        collection.insertOne(req.body, (err, res) => {
+                            if (err) console.log(err);
+                        });
 
                 });
                 await req.session.set("user", req.body.username);
+                await req.session.set("firstname", req.body.Firstname);
                 await req.session.save();
                 await res.status(201).end();
 

@@ -2,3 +2,44 @@
 {
     left: -100px !important;
 }
+.navButton > button
+{
+    background-color: #2B2D42;
+    border: #2B2D42;
+    border-radius: 6px;
+    margin-right: 10%;
+    min-width: 90px;
+    max-width: 90px;
+}
+.navButton > button:hover, .titleButtons > button:focus,
+{
+    background-color: #2B2D42 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.navButton
+{
+    width: 10vw;
+    
+}
+.navLink
+{
+    color: #2B2D42 !important;
+    text-decoration: none !important;
+}
+.navDropdown > a
+{
+    color: #2B2D42 !important;
+    text-decoration: none !important;
+}
+.navDropdown > div :focus
+{
+    color:  #2B2D42 !important;
+    background-color: transparent !important;
+}
+.navDropdownItem
+{
+    color: #2B2D42 !important;
+    text-decoration: none !important
+}

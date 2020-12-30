@@ -1,9 +1,9 @@
 import useUser from "../utils/userCheck";
-import styles from "../styles/infoWidget.module.scss"
+import styles from "../styles/infoWidgetRID.module.scss"
 import {useEffect} from "react";
 import axios from "axios"
 
-const InfoWidget =  () =>
+const InfoWidgetRID =  () =>
 {
     const { user, mutateUser } = useUser();
     const username =  user?.username;
@@ -33,4 +33,4 @@ const InfoWidget =  () =>
     )
     
 }
-export default InfoWidget;
+export default InfoWidgetRID;

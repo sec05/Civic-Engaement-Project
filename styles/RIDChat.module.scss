@@ -1,0 +1,59 @@
+.container
+{
+    height: 60vh;
+    width: 105%;
+    background-color: #2b2e4a;
+    margin-right: 10%;
+    border: 3px solid #2b2e4a;
+    border-radius: 8px;
+    color: #ffffff;
+}
+.chatBox
+{
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    height: 50vh;
+    overflow-y: auto;
+    display: flex;
+    overflow-x: hidden;
+    justify-content: right;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    flex-direction: column-reverse;
+}
+.inputMessage
+{
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 94%;
+    border: 1px solid #2b2e4a;
+    color:  #2b2e4a;
+}
+
+.ownMessage
+{
+    width: 12vw;
+    height: 12vh;
+    background-color: #2b2e4a;
+    margin-top: 3%;
+    margin-right: 3%;
+    margin-bottom: 3%;
+    border-radius: 8px;
+    margin-left: auto;
+    color: white;
+}
+.otherMessage
+{
+    width: 12vw;
+    height: 12vh;
+    background-color: #D80032;
+    color: white;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    border-radius: 8px;
+    margin-right: auto;
+}

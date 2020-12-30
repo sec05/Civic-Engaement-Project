@@ -6,13 +6,15 @@ const GetRooms = (async(req,res)=>{
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(async(err)=>{
         if(err) console.log(err);
-        client.db("PBData").collection("PBRooms").find({type: "room"}).toArray(async (err, result) => {
+        client.db("PBData").collection("PBRooms").find().toArray(async (err, result) => {
             if(err) console.log(err);
             else{
-                console.log(result);
-                res.status(200).send(result);
+             
+                await res.status(200).send(result);
             }
         })
     })
+    await client.close();
+    
 })
 export default GetRooms;

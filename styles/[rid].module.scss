@@ -1,0 +1,114 @@
+.ridContainer
+{
+    margin-top: 3%;
+   
+    display: flex;
+}
+.ridData
+{
+     margin-left: 10%;
+    margin-right: 5%;
+    width: 60%;
+}
+.ridLink > h1
+{
+    font-size: 1vw;
+    color: #ecebeb; 
+    display: inline;
+}
+.ridLink > div > i
+{
+    font-size: 1vw;
+    color: #ecebeb; 
+    margin-left: 2%;
+}
+.ridLinkCopyDiv
+{
+    display: inline;
+}
+.ridLinkCopyDiv :hover
+{
+    cursor: pointer;
+}
+.contact
+{
+    margin-top: 2%;
+    z-index: -10;
+}
+.scriptcontainer
+{
+    margin-top: 2%;
+    position: relative;
+    margin-right: 20%;
+    
+}
+.scriptcontainer > h3
+{
+
+line-height: 1.4 !important;
+}
+.notifContainerRID
+{
+    z-index: 10;
+    position: absolute;
+    border: 2px solid #2B2D42;
+    border-radius: 12px;
+    height: fit-content;
+     width: 25%;
+     animation: fadeOut 0.4s ease;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: white;
+
+}
+.dropdownButton >button
+{
+background-color: #2B2D42 !important;
+border: #2B2D42 !important;
+
+}
+.dropdownButton> button:focus
+{
+background-color: #2B2D42 !important;
+border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.dropdownButton>div>a:focus
+{
+    color:  #2B2D42 !important;
+    background-color: transparent !important;
+}
+.widgetTable
+{
+    height: 70vh !important;
+    width: 15vw !important;
+}
+
+@keyframes fadeOut {
+    from {top: 10%;
+    opacity: 1;}
+    to {top: 0%;
+    opacity: 0;}
+  }
+@-webkit-keyframes fadeOut
+{
+    from {top: 10%;
+        opacity: 1;}
+        to {top: 0%;
+        opacity: 0;}
+}
+@-moz-keyframes fadeOut
+{
+    from {top: 10%;
+        opacity: 1;}
+        to {top: 0%;
+        opacity: 0;}
+}
+@-o-keyframes fadeOut
+{
+    from {top: 10%;
+        opacity: 1;}
+        to {top: 0%;
+        opacity: 0;}
+}

@@ -3,7 +3,6 @@ import Layout from "../../components/Layout";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios"
-
 export default class login extends React.Component {
   constructor()
   {
@@ -50,29 +49,33 @@ export default class login extends React.Component {
 
   
   return (
-   
-    <div>
-      <Layout>
+    <Layout>
+    <div style={{marginLeft: "10%", marginRight: "10%"}}>
+     
         <br />
         <br />
-        <h1 style={{fontSize:"280%"}}>Login</h1>
+        <h1 style={{fontSize:"280%", color: "#2B2D42"}}>Login</h1>
         <br/>
         <Form>
           <Form.Group >
-            <Form.Label>Username</Form.Label>
-            <Form.Control type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsername} id="username" />
+            <Form.Label style={{color: "#2B2D42"}}>Username</Form.Label>
+            <Form.Control type="text"  style={{width: "50%", color: "#2B2D42"}} className="inputField" placeholder="Username" value={this.state.username} onChange={this.handleUsername} id="username" />
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password"value={this.state.password} onChange={this.handlePassword} id="password" />
+            <Form.Label  style={{color: "#2B2D42"}}>Password</Form.Label>
+            <Form.Control type="password" className="inputField" style={{width: "50%", color: "#2B2D42"}} placeholder="Password"value={this.state.password} onChange={this.handlePassword} id="password" />
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={(e)=>this.submit(e)}>
+          <div className="buttonContainer" >
+            <Button variant="primary" type="submit" onClick={(e)=>this.submit(e)}>
             Login
           </Button>
+          </div>
+          
         </Form>
-      </Layout>
-    </div>
+     
+    </div> 
+    </Layout>
   )
   }
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import NavBar from "./NavBar";
 import styles from "../styles/Layout.module.scss";
-import useUser from "../helpers/userCheck";
+import useUser from "../utils/userCheck";
 import {useRouter} from "next/router"
-import { route } from "next/dist/next-server/server/router";
+
 const Layout = (props) => {
 const router = useRouter();
     
