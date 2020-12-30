@@ -10,7 +10,7 @@ const InfoWidget =  () =>
    console.log(username, "username");
     async function updateStats()
     {
-        await axios.post("/api/GetUserStats",{username: username}, { proxy: { host: "127.0.0.1", port: 3000 } }).then((response)=>document.getElementById("numberOfCallsUser").innerHTML=response.data)
+        await axios.post("/api/GetUserStats",{username: username}).then((response)=>document.getElementById("numberOfCallsUser").innerHTML=response.data)
     }
 
     updateStats();
