@@ -103,6 +103,6 @@ dist
 # TernJS port file
 .tern-port
 
-db.json
+
 test.http
 .env.local
