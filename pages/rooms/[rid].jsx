@@ -216,7 +216,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   var paths;
   await axios
-    .get("/api/RoomIds")
+    .get("/api/RoomIds", { proxy: { host: "127.0.0.1", port: 80 } })
     .then((response) => {
       paths = response.data;
     }).catch(error=>console.log(error));
