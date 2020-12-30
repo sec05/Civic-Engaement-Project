@@ -219,7 +219,7 @@ export async function getStaticPaths() {
     .get("/api/RoomIds")
     .then((response) => {
       paths = response.data;
-    });
+    }).catch(error=>console.log(error));
 
   return {
     paths,
