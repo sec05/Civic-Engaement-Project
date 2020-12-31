@@ -29,7 +29,9 @@ if (roomData.participants > 10) {
             id: roomData._id,
             change: "leave",
           },
-        
+          {
+            proxy: { host: "127.0.0.1", port: 3000 },
+          }
         )
         .catch((error) => console.log(error))
         .then(() => {
@@ -61,7 +63,7 @@ if (roomData.participants < 10) {
       document.getElementById("contact")
     );
     await axios
-      .get("/api/GetPhonebanker")
+      .get("/api/GetPhonebanker", { proxy: { host: "127.0.0.1", port: 3000 } })
       .then((response) => {
         document.getElementById("name").innerHTML = response.data.name;
         ReactDOM.render(
@@ -194,7 +196,9 @@ export async function getStaticProps({ params }) {
         id: params.rid,
         change: "join",
       },
-      
+      {
+        proxy: { host: "127.0.0.1", port: 3000 },
+      }
     )
     .catch((error) => console.log(error));
   await axios
@@ -203,7 +207,9 @@ export async function getStaticProps({ params }) {
       {
         path: params.rid,
       },
-      
+      {
+        proxy: { host: "127.0.0.1", port: 3000 },
+      }
     )
     .then((response) => (roomData = response.data))
     .catch((error) => console.log(error));
@@ -216,10 +222,10 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   var paths;
   await axios
-    .get("/api/RoomIds", { proxy: { host: "127.0.0.1", port: 80 } })
+    .get("/api/RoomIds", { proxy: { host: "127.0.0.1", port: 3000 } })
     .then((response) => {
       paths = response.data;
-    }).catch(error=>console.log(error));
+    });
 
   return {
     paths,
